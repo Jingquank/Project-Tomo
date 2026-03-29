@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		022B9EE22A13721475D1E95A /* dummy-gertrude.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0807A4542901E4B4953238A1 /* dummy-gertrude.jpg */; };
+		07B696BB6D4BBEC67C557A20 /* DebugLogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EA1C0820FBBF6A3E38E28F /* DebugLogStore.swift */; };
+		093CC8D7A952B47C37788D1A /* StoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDF79B11C623A1DF111A7F /* StoryDetailView.swift */; };
+		1DB677CFA92C41D9DD60B58B /* StoryInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4D0D78B1A5527EF7B476D /* StoryInputBar.swift */; };
+		1E6A9C55D616DA159B33795E /* MagicalContentDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8759AFC5C75C5B617EBBA66F /* MagicalContentDetector.swift */; };
+		214EA057017F6AF9D0B456CF /* AnthropicService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA189A0DFBFC6D92483FC9D /* AnthropicService.swift */; };
+		26AF6AE861A1CE7FB8A97576 /* MagicalConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AD3FEF760F2A4821B0A70F /* MagicalConfirmationView.swift */; };
+		294C90C5BD777D7CDDA6B44E /* PaperClipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BC63B9A046DF4B29CCB6CB /* PaperClipView.swift */; };
+		2D9776213A1AF2D1AF4D21FC /* MagicalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF864ED2822C89E108A80C5 /* MagicalTextView.swift */; };
+		3C632C6AACE968B6C70AD0DF /* dummy-ed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78781F4DD8E2BA9E95F5493D /* dummy-ed.jpg */; };
+		4BEF35E4D83E5D1ED6B72D42 /* MagicalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C137EC44CC6E8EC5A62B762B /* MagicalEntity.swift */; };
+		6E2AD53B82DADD51273B3255 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988B9CBA13BFC9AFFE8740BA /* HomeView.swift */; };
+		6F5C82B257DCA98026B6EAF9 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FCC065598B7C690C2E2695 /* Secrets.swift */; };
+		76B7DEE1ACF6C863A53FBFF7 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31748C3960CEA972C6E829E /* BottomBarView.swift */; };
+		7DEB6889766C5749F3D3A8F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB301962E3F9B73CFA5E4C7F /* RootView.swift */; };
+		91BDCE8209004632DBEB25C6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8965E2265D423A8D83F39 /* SettingsView.swift */; };
+		9B317E033A44BD4374D3CABC /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */; };
+		9DFB3F3AD48E6BCAEB7FE1AB /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0703264787FC102891CB8 /* WaterfallLayout.swift */; };
+		A6646EA2894EA9A2F09C21D1 /* SearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */; };
+		CA1A000B52A8C3E4E030F113 /* StoryCardFrameKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */; };
+		D8DD8E5D4C1D5AA8300215D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B16346D31E6B59F325D0530 /* Assets.xcassets */; };
+		DC16BCB5C4FE35B1A1023E86 /* dummy-cheshire.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79B37E8F11D716CF6B70BBD1 /* dummy-cheshire.jpg */; };
+		E45C93D75B041EBED5DFA79A /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00CA10302B5331DC79149862 /* Lora-Bold.ttf */; };
+		E4A032E531A97A9799F2D61C /* ProjectTomoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC7D253E4801C2E84DB8B7F /* ProjectTomoApp.swift */; };
+		E4C1B0E7796BB9715D297174 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A66365E8C0112C6536B65D /* Friend.swift */; };
+		E9F9B2CCF504A053E31931E8 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74493084354AA02D6927051B /* Story.swift */; };
+		EA59DFB678B66A6FA726F395 /* StoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0D2D5E522531FD26D101F /* StoryCardView.swift */; };
+		EB77511A18F62C272F7EBF83 /* DummyDataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8ABCD95CF866B81387AB62 /* DummyDataSeeder.swift */; };
+		F062EB48BA749C40FBD43A2A /* AddFriendSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */; };
+		F29AC66E4B75081C84278CA6 /* TomoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F30AA335456455755EAC3D /* TomoTheme.swift */; };
+		F658007E2210304FF6A544CF /* ScrollFadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */; };
+		FD583FE2146D0F68DE2F8A9B /* FriendPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696B8BFF7B47327AFE33827 /* FriendPageView.swift */; };
+		FD94B0ED0B424E986ABDB9A3 /* FriendCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0483CDC225004FED88AEBC /* FriendCardView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00CA10302B5331DC79149862 /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
+		0807A4542901E4B4953238A1 /* dummy-gertrude.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dummy-gertrude.jpg"; sourceTree = "<group>"; };
+		1B0483CDC225004FED88AEBC /* FriendCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCardView.swift; sourceTree = "<group>"; };
+		1B16346D31E6B59F325D0530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1EF864ED2822C89E108A80C5 /* MagicalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalTextView.swift; sourceTree = "<group>"; };
+		21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheet.swift; sourceTree = "<group>"; };
+		21D8965E2265D423A8D83F39 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		259D06E1BB326FF0046337B1 /* ProjectTomo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ProjectTomo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		40EA1C0820FBBF6A3E38E28F /* DebugLogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogStore.swift; sourceTree = "<group>"; };
+		4B8ABCD95CF866B81387AB62 /* DummyDataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataSeeder.swift; sourceTree = "<group>"; };
+		5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardFrameKey.swift; sourceTree = "<group>"; };
+		6EA189A0DFBFC6D92483FC9D /* AnthropicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicService.swift; sourceTree = "<group>"; };
+		71C4D0D78B1A5527EF7B476D /* StoryInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryInputBar.swift; sourceTree = "<group>"; };
+		74493084354AA02D6927051B /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		78781F4DD8E2BA9E95F5493D /* dummy-ed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dummy-ed.jpg"; sourceTree = "<group>"; };
+		79B37E8F11D716CF6B70BBD1 /* dummy-cheshire.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "dummy-cheshire.jpg"; sourceTree = "<group>"; };
+		83A66365E8C0112C6536B65D /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		8759AFC5C75C5B617EBBA66F /* MagicalContentDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalContentDetector.swift; sourceTree = "<group>"; };
+		8DC7D253E4801C2E84DB8B7F /* ProjectTomoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTomoApp.swift; sourceTree = "<group>"; };
+		90C0DDF5A7ADA7EF0699532C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		988B9CBA13BFC9AFFE8740BA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A1D0703264787FC102891CB8 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFadeOverlay.swift; sourceTree = "<group>"; };
+		BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendSheet.swift; sourceTree = "<group>"; };
+		C137EC44CC6E8EC5A62B762B /* MagicalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalEntity.swift; sourceTree = "<group>"; };
+		CDDDF79B11C623A1DF111A7F /* StoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailView.swift; sourceTree = "<group>"; };
+		D1F30AA335456455755EAC3D /* TomoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomoTheme.swift; sourceTree = "<group>"; };
+		D31748C3960CEA972C6E829E /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		D3E0D2D5E522531FD26D101F /* StoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardView.swift; sourceTree = "<group>"; };
+		D696B8BFF7B47327AFE33827 /* FriendPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageView.swift; sourceTree = "<group>"; };
+		DB301962E3F9B73CFA5E4C7F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F2FCC065598B7C690C2E2695 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		F3AD3FEF760F2A4821B0A70F /* MagicalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalConfirmationView.swift; sourceTree = "<group>"; };
+		F4BC63B9A046DF4B29CCB6CB /* PaperClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperClipView.swift; sourceTree = "<group>"; };
+		F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0884166DF750C790B3EC5E53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DB301962E3F9B73CFA5E4C7F /* RootView.swift */,
+				4258EF2E49FAD13913EF3DBC /* FriendPage */,
+				765E23F14119AD1D23F03359 /* Home */,
+				E1F11E5EB7CE5F1D00CAB255 /* Settings */,
+				5882C7B3BCFEB1E6AA0A1301 /* Shared */,
+				804A6F94545D8673BD3995E6 /* StoryDetail */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4258EF2E49FAD13913EF3DBC /* FriendPage */ = {
+			isa = PBXGroup;
+			children = (
+				D696B8BFF7B47327AFE33827 /* FriendPageView.swift */,
+				F3AD3FEF760F2A4821B0A70F /* MagicalConfirmationView.swift */,
+				1EF864ED2822C89E108A80C5 /* MagicalTextView.swift */,
+				D3E0D2D5E522531FD26D101F /* StoryCardView.swift */,
+				71C4D0D78B1A5527EF7B476D /* StoryInputBar.swift */,
+			);
+			path = FriendPage;
+			sourceTree = "<group>";
+		};
+		5882C7B3BCFEB1E6AA0A1301 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */,
+				F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */,
+				F4BC63B9A046DF4B29CCB6CB /* PaperClipView.swift */,
+				B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */,
+				21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */,
+				5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		7429EC5FF1F6950A70E23213 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				259D06E1BB326FF0046337B1 /* ProjectTomo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75C3D0FABC0BE118A294D307 = {
+			isa = PBXGroup;
+			children = (
+				EDD2A4944929237FFCB18905 /* ProjectTomo */,
+				7429EC5FF1F6950A70E23213 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		765E23F14119AD1D23F03359 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D31748C3960CEA972C6E829E /* BottomBarView.swift */,
+				1B0483CDC225004FED88AEBC /* FriendCardView.swift */,
+				988B9CBA13BFC9AFFE8740BA /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7AEC737EB39F00CE635711E8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				00CA10302B5331DC79149862 /* Lora-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		804A6F94545D8673BD3995E6 /* StoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CDDDF79B11C623A1DF111A7F /* StoryDetailView.swift */,
+			);
+			path = StoryDetail;
+			sourceTree = "<group>";
+		};
+		C41589C1F6749B2E85AD0C94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83A66365E8C0112C6536B65D /* Friend.swift */,
+				C137EC44CC6E8EC5A62B762B /* MagicalEntity.swift */,
+				74493084354AA02D6927051B /* Story.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1583A586A91C81EDC15E8EA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4B8ABCD95CF866B81387AB62 /* DummyDataSeeder.swift */,
+				A1D0703264787FC102891CB8 /* WaterfallLayout.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DF5D63F4490954415AA14ED5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79B37E8F11D716CF6B70BBD1 /* dummy-cheshire.jpg */,
+				78781F4DD8E2BA9E95F5493D /* dummy-ed.jpg */,
+				0807A4542901E4B4953238A1 /* dummy-gertrude.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E1F11E5EB7CE5F1D00CAB255 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				21D8965E2265D423A8D83F39 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E53A515A50C0267166816302 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6EA189A0DFBFC6D92483FC9D /* AnthropicService.swift */,
+				40EA1C0820FBBF6A3E38E28F /* DebugLogStore.swift */,
+				8759AFC5C75C5B617EBBA66F /* MagicalContentDetector.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E73EA68DAD461CCD2938EF4F /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				D1F30AA335456455755EAC3D /* TomoTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		EDD2A4944929237FFCB18905 /* ProjectTomo */ = {
+			isa = PBXGroup;
+			children = (
+				1B16346D31E6B59F325D0530 /* Assets.xcassets */,
+				90C0DDF5A7ADA7EF0699532C /* Info.plist */,
+				8DC7D253E4801C2E84DB8B7F /* ProjectTomoApp.swift */,
+				F2FCC065598B7C690C2E2695 /* Secrets.swift */,
+				7AEC737EB39F00CE635711E8 /* Fonts */,
+				C41589C1F6749B2E85AD0C94 /* Models */,
+				DF5D63F4490954415AA14ED5 /* Resources */,
+				E53A515A50C0267166816302 /* Services */,
+				E73EA68DAD461CCD2938EF4F /* Theme */,
+				D1583A586A91C81EDC15E8EA /* Utilities */,
+				0884166DF750C790B3EC5E53 /* Views */,
+			);
+			path = ProjectTomo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		37D0F2CB6E1D760D847EA3F3 /* ProjectTomo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99F3A916013BA0006704FFEA /* Build configuration list for PBXNativeTarget "ProjectTomo" */;
+			buildPhases = (
+				3B85C7FD3A83618F1AEC42F6 /* Sources */,
+				977375C2DAA1F05C76B11610 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProjectTomo;
+			packageProductDependencies = (
+			);
+			productName = ProjectTomo;
+			productReference = 259D06E1BB326FF0046337B1 /* ProjectTomo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0522149D94B7B503267D6DDC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2640;
+				TargetAttributes = {
+					37D0F2CB6E1D760D847EA3F3 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8137EFDDD6F11BF78AC9FB06 /* Build configuration list for PBXProject "ProjectTomo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 75C3D0FABC0BE118A294D307;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7429EC5FF1F6950A70E23213 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				37D0F2CB6E1D760D847EA3F3 /* ProjectTomo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		977375C2DAA1F05C76B11610 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8DD8E5D4C1D5AA8300215D2 /* Assets.xcassets in Resources */,
+				E45C93D75B041EBED5DFA79A /* Lora-Bold.ttf in Resources */,
+				DC16BCB5C4FE35B1A1023E86 /* dummy-cheshire.jpg in Resources */,
+				3C632C6AACE968B6C70AD0DF /* dummy-ed.jpg in Resources */,
+				022B9EE22A13721475D1E95A /* dummy-gertrude.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B85C7FD3A83618F1AEC42F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F062EB48BA749C40FBD43A2A /* AddFriendSheet.swift in Sources */,
+				214EA057017F6AF9D0B456CF /* AnthropicService.swift in Sources */,
+				9B317E033A44BD4374D3CABC /* AvatarView.swift in Sources */,
+				76B7DEE1ACF6C863A53FBFF7 /* BottomBarView.swift in Sources */,
+				07B696BB6D4BBEC67C557A20 /* DebugLogStore.swift in Sources */,
+				EB77511A18F62C272F7EBF83 /* DummyDataSeeder.swift in Sources */,
+				E4C1B0E7796BB9715D297174 /* Friend.swift in Sources */,
+				FD94B0ED0B424E986ABDB9A3 /* FriendCardView.swift in Sources */,
+				FD583FE2146D0F68DE2F8A9B /* FriendPageView.swift in Sources */,
+				6E2AD53B82DADD51273B3255 /* HomeView.swift in Sources */,
+				26AF6AE861A1CE7FB8A97576 /* MagicalConfirmationView.swift in Sources */,
+				1E6A9C55D616DA159B33795E /* MagicalContentDetector.swift in Sources */,
+				4BEF35E4D83E5D1ED6B72D42 /* MagicalEntity.swift in Sources */,
+				2D9776213A1AF2D1AF4D21FC /* MagicalTextView.swift in Sources */,
+				294C90C5BD777D7CDDA6B44E /* PaperClipView.swift in Sources */,
+				E4A032E531A97A9799F2D61C /* ProjectTomoApp.swift in Sources */,
+				7DEB6889766C5749F3D3A8F5 /* RootView.swift in Sources */,
+				F658007E2210304FF6A544CF /* ScrollFadeOverlay.swift in Sources */,
+				A6646EA2894EA9A2F09C21D1 /* SearchSheet.swift in Sources */,
+				6F5C82B257DCA98026B6EAF9 /* Secrets.swift in Sources */,
+				91BDCE8209004632DBEB25C6 /* SettingsView.swift in Sources */,
+				E9F9B2CCF504A053E31931E8 /* Story.swift in Sources */,
+				CA1A000B52A8C3E4E030F113 /* StoryCardFrameKey.swift in Sources */,
+				EA59DFB678B66A6FA726F395 /* StoryCardView.swift in Sources */,
+				093CC8D7A952B47C37788D1A /* StoryDetailView.swift in Sources */,
+				1DB677CFA92C41D9DD60B58B /* StoryInputBar.swift in Sources */,
+				F29AC66E4B75081C84278CA6 /* TomoTheme.swift in Sources */,
+				9DFB3F3AD48E6BCAEB7FE1AB /* WaterfallLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		08630AB5E9BDC4E62A8D5FDF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		810EACA7696D6707F1AC3307 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ProjectTomo/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomo.ProjectTomo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8D52D7290730CAD5B1129C4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = ProjectTomo/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tomo.ProjectTomo;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9633DB034D3E88C43BD1FC76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8137EFDDD6F11BF78AC9FB06 /* Build configuration list for PBXProject "ProjectTomo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9633DB034D3E88C43BD1FC76 /* Debug */,
+				08630AB5E9BDC4E62A8D5FDF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		99F3A916013BA0006704FFEA /* Build configuration list for PBXNativeTarget "ProjectTomo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				810EACA7696D6707F1AC3307 /* Debug */,
+				8D52D7290730CAD5B1129C4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0522149D94B7B503267D6DDC /* Project object */;
+}
