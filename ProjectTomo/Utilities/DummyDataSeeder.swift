@@ -71,9 +71,9 @@ enum DummyDataSeeder {
         bioStory.lastEditedAt = bioStory.createdAt
         bioStory.isPinned = true
         bioStory.magicalEntities = [
-            MagicalEntity(type: .birthday, value: "Apr 6, 1995", label: "Birthday", startIndex: 22, endIndex: 33, isConfirmed: true),
-            MagicalEntity(type: .location, subtype: "currentCity", value: "Guangzhou", label: "Current city", startIndex: 62, endIndex: 71, isConfirmed: true),
-            MagicalEntity(type: .mbti, value: "INFJ", label: "MBTI", startIndex: 93, endIndex: 97, isConfirmed: true),
+            MagicalEntity(type: .birthday, subtype: "Birthday", subtypeKey: "birthday", value: "Apr 6, 1995", label: "Birthday", startIndex: 22, endIndex: 33, isConfirmed: true),
+            MagicalEntity(type: .location, subtype: "Current city", subtypeKey: "currentCity", value: "Guangzhou", label: "Current city", startIndex: 62, endIndex: 71, isConfirmed: true),
+            MagicalEntity(type: .mbti, subtype: "MBTI", subtypeKey: "mbti", value: "INFJ", label: "MBTI", startIndex: 93, endIndex: 97, isConfirmed: true),
         ]
         bioStory.friend = friend
 
@@ -81,7 +81,7 @@ enum DummyDataSeeder {
         dueDate.createdAt = makeDate(month: 1, year: 2025)
         dueDate.lastEditedAt = dueDate.createdAt
         dueDate.magicalEntities = [
-            MagicalEntity(type: .importantDate, subtype: "Due date", value: "July 7, 2025", label: "Cheshire is due", startIndex: 19, endIndex: 31, isConfirmed: true),
+            MagicalEntity(type: .importantDate, subtype: "Due date", subtypeKey: "dueDate", value: "July 7, 2025", label: "Cheshire is due", startIndex: 19, endIndex: 31, isConfirmed: true),
         ]
         dueDate.friend = friend
 
@@ -146,8 +146,8 @@ enum DummyDataSeeder {
         toronto.createdAt = makeDate(month: 2, year: 2025)
         toronto.lastEditedAt = toronto.createdAt
         toronto.magicalEntities = [
-            MagicalEntity(type: .location, subtype: "Visiting", value: "Toronto", label: "Visiting", startIndex: 9, endIndex: 16, isConfirmed: true),
-            MagicalEntity(type: .importantDate, subtype: "Important date", value: "May 10, 2026", label: "Visiting Toronto", startIndex: 20, endIndex: 32, isConfirmed: true),
+            MagicalEntity(type: .location, subtype: "Visiting", subtypeKey: "visiting", value: "Toronto", label: "Visiting", startIndex: 9, endIndex: 16, isConfirmed: true),
+            MagicalEntity(type: .importantDate, subtype: "Important date", subtypeKey: "importantDate", value: "May 10, 2026", label: "Visiting Toronto", startIndex: 20, endIndex: 32, isConfirmed: true),
         ]
         toronto.friend = friend
 

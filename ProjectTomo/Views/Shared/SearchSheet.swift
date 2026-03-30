@@ -73,6 +73,8 @@ struct SearchSheet: View {
                 }
             }
             .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .tomoBackground()
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Friends and stories")
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)

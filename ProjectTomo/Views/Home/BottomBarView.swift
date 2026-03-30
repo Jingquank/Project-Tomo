@@ -25,7 +25,7 @@ struct BottomBarView: View {
     private func barButton(icon: String, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Image(systemName: icon)
-                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .font(TomoTheme.iconFont.bold())
                 .foregroundStyle(TomoTheme.warmCharcoal)
                 .frame(width: 44, height: 44)
                 .contentShape(Rectangle())

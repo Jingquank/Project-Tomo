@@ -2,11 +2,10 @@ import SwiftUI
 
 struct FriendPageView: View {
     @Bindable var friend: Friend
-    var onBack: () -> Void
-    var onStoryTapped: (Story) -> Void
+    @Binding var path: [Friend]
 
     @Environment(\.modelContext) private var modelContext
-    @State private var showDeleteConfirmation = false
+    @State private var selectedStory: Story?
     @State private var magicalDetector = MagicalContentDetector()
 
     private var pinnedStories: [Story] {
@@ -19,14 +18,12 @@ struct FriendPageView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            TomoTheme.pageBackground.ignoresSafeArea()
-
             ScrollView {
                 VStack(spacing: TomoTheme.gridGutter) {
-                    Spacer().frame(height: 52)
+                    Spacer().frame(height: 12)
                     pinnedSection
                     unpinnedSection
-                    Spacer().frame(height: 100)
+                    Spacer().frame(height: TomoTheme.scrollBottomInset)
                 }
                 .padding(.horizontal, TomoTheme.gridGutter)
             }
@@ -34,17 +31,28 @@ struct FriendPageView: View {
 
             ScrollFadeOverlay(extendToSafeArea: true)
 
-            navigationBar
-                .padding(.horizontal, 12)
-                .frame(maxHeight: .infinity, alignment: .top)
-
             StoryInputBar(
                 friendName: friend.name,
                 detector: magicalDetector,
-                onSubmit: { text, imageData in
-                    addStory(text: text, imageData: imageData)
+                onSubmit: { text, imageData, entities in
+                    addStory(text: text, imageData: imageData, entities: entities)
                 }
             )
+        }
+        .tomoBackground()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink(destination: FriendSettingsView(friend: friend, path: $path)) {
+                    HStack(spacing: 12) {
+                        Text(friend.name)
+                            .font(TomoTheme.emphasisFont)
+                            .foregroundStyle(TomoTheme.warmCharcoal)
+
+                        AvatarView(friend: friend, size: TomoTheme.avatarSizeSmall)
+                    }
+                }
+            }
         }
         .overlay(alignment: .top) {
             if magicalDetector.showError {
@@ -58,53 +66,11 @@ struct FriendPageView: View {
             }
         }
         .animation(.spring(duration: 0.35), value: magicalDetector.showError)
-        .alert("Delete \(friend.name)?", isPresented: $showDeleteConfirmation) {
-            Button("Delete", role: .destructive) {
-                modelContext.delete(friend)
-                onBack()
-            }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This will remove all their stories. This cannot be undone.")
+        .sheet(item: $selectedStory) { story in
+            StoryDetailView(story: story)
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
         }
-    }
-
-    private var navigationBar: some View {
-        HStack {
-            Button(action: onBack) {
-                HStack(spacing: 6) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 17, weight: .semibold, design: .rounded))
-                    Text("Home")
-                        .font(TomoTheme.bodyFont)
-                }
-                .foregroundStyle(TomoTheme.warmCharcoal)
-            }
-
-            Spacer()
-
-            HStack(spacing: 12) {
-                Text(friend.name)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .foregroundStyle(TomoTheme.warmCharcoal)
-
-                AvatarView(friend: friend, size: TomoTheme.avatarSizeSmall)
-            }
-
-            Menu {
-                Button(role: .destructive) {
-                    showDeleteConfirmation = true
-                } label: {
-                    Label("Delete Friend", systemImage: "trash")
-                }
-            } label: {
-                Image(systemName: "ellipsis")
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .foregroundStyle(TomoTheme.warmCharcoal)
-                    .frame(width: 36, height: 36)
-            }
-        }
-        .padding(.top, 8)
     }
 
     private var pinnedSection: some View {
@@ -113,17 +79,10 @@ struct FriendPageView: View {
                 StoryCardView(
                     story: story,
                     isPinned: true,
-                    detector: magicalDetector,
-                    onTap: { onStoryTapped(story) },
-                    onTogglePin: { togglePin(story) }
-                )
-                .background(
-                    GeometryReader { geo in
-                        Color.clear.preference(
-                            key: StoryCardFrameKey.self,
-                            value: [story.id: geo.frame(in: .global)]
-                        )
-                    }
+                    onTap: { selectedStory = story },
+                    onTogglePin: { togglePin(story) },
+                    onSetAsProfilePic: { setAsProfilePic(story) },
+                    onSetAsName: { setAsName(story) }
                 )
             }
         }
@@ -135,17 +94,10 @@ struct FriendPageView: View {
                 StoryCardView(
                     story: story,
                     isPinned: false,
-                    detector: magicalDetector,
-                    onTap: { onStoryTapped(story) },
-                    onTogglePin: { togglePin(story) }
-                )
-                .background(
-                    GeometryReader { geo in
-                        Color.clear.preference(
-                            key: StoryCardFrameKey.self,
-                            value: [story.id: geo.frame(in: .global)]
-                        )
-                    }
+                    onTap: { selectedStory = story },
+                    onTogglePin: { togglePin(story) },
+                    onSetAsProfilePic: { setAsProfilePic(story) },
+                    onSetAsName: { setAsName(story) }
                 )
             }
         }
@@ -170,14 +122,14 @@ struct FriendPageView: View {
                 magicalDetector.retry()
             } label: {
                 Text("Retry")
-                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                    .font(TomoTheme.smallActionFont)
                     .foregroundStyle(TomoTheme.tomoTitle)
             }
             Button {
                 withAnimation { magicalDetector.dismissError() }
             } label: {
                 Image(systemName: "xmark")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(TomoTheme.captionFont)
                     .foregroundStyle(TomoTheme.secondaryText)
             }
         }
@@ -188,17 +140,30 @@ struct FriendPageView: View {
         .padding(.top, 60)
     }
 
-    private func addStory(text: String, imageData: Data?) {
+    private func setAsProfilePic(_ story: Story) {
+        if let existing = friend.thumbnailStory, existing.id != story.id {
+            existing.isThumbnailStory = false
+        }
+        story.isThumbnailStory = true
+        story.isPinned = true
+        friend.thumbnailData = story.imageData
+    }
+
+    private func setAsName(_ story: Story) {
+        if let existing = friend.nameStory, existing.id != story.id {
+            existing.isNameStory = false
+        }
+        story.isNameStory = true
+        story.isPinned = true
+        friend.name = story.textContent
+    }
+
+    private func addStory(text: String, imageData: Data?, entities: [MagicalEntity]) {
         let story = Story(textContent: text, imageData: imageData)
         story.friend = friend
-        modelContext.insert(story)
-
-        Task {
-            await magicalDetector.detect(
-                text: text,
-                friendName: friend.name,
-                for: story
-            )
+        if !entities.isEmpty {
+            story.magicalEntities = entities
         }
+        modelContext.insert(story)
     }
 }

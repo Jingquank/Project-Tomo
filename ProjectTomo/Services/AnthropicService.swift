@@ -30,6 +30,11 @@ actor AnthropicService {
         }
     }
 
+    struct DetectedOption: Codable {
+        let key: String
+        let label: String
+    }
+
     struct DetectedEntity: Codable {
         let type: String
         let value: String
@@ -37,6 +42,8 @@ actor AnthropicService {
         let startIndex: Int
         let endIndex: Int
         let suggestedSubtype: String?
+        let message: String?
+        let suggestedOptions: [DetectedOption]?
     }
 
     struct DetectionResult: Codable {
@@ -63,13 +70,16 @@ actor AnthropicService {
         - anniversary: A relationship anniversary date
         - mbti: An MBTI personality type (e.g. INFJ, ENTP)
 
-        For each entity found, return its exact text span with character indices (0-based) into the original text.
-        Also suggest a subtype where relevant:
-        - For location: "currentCity", "hometown", or "visiting"
-        - For importantDate: "dueDate" or "importantDate"
+        For each entity found, return:
+        1. Its exact text span with character indices (0-based) into the original text.
+        2. "suggestedSubtype": a camelCase key for the most likely subtype (e.g. "currentCity", "hometown", "visiting", "dueDate", "importantDate").
+        3. "message": a short, natural sentence (max ~10 words) describing what you noticed. Be specific to the context. Examples: "Looks like a birthday!", "I spotted a place", "This seems like an important date".
+        4. "suggestedOptions": an array of 2-4 objects, each with "key" (camelCase identifier) and "label" (user-facing display string), ordered by confidence. These represent what this information likely means. Be specific to context.
+           For example, for "England" in "She grew up in England": [{"key": "hometown", "label": "Hometown"}, {"key": "birthplace", "label": "Birthplace"}, {"key": "countryOfOrigin", "label": "Country of origin"}]
+           For "Apr 6, 1995" in "born on Apr 6, 1995": [{"key": "birthday", "label": "Birthday"}, {"key": "importantDate", "label": "Important date"}]
 
         Return ONLY valid JSON, no markdown, no explanation:
-        {"entities": [{"type": "birthday", "value": "Apr 6, 1995", "label": "birthday", "startIndex": 22, "endIndex": 33, "suggestedSubtype": null}]}
+        {"entities": [{"type": "birthday", "value": "Apr 6, 1995", "label": "birthday", "startIndex": 22, "endIndex": 33, "suggestedSubtype": "birthday", "message": "Looks like a birthday!", "suggestedOptions": [{"key": "birthday", "label": "Birthday"}, {"key": "importantDate", "label": "Important date"}]}]}
 
         If no entities found, return: {"entities": []}
         """
@@ -143,14 +153,20 @@ actor AnthropicService {
 
         let entities = result.entities.compactMap { detected in
             guard let type = MagicalType(rawValue: detected.type) else { return nil as MagicalEntity? }
+            let options = (detected.suggestedOptions ?? []).map {
+                SuggestedOption(key: $0.key, label: $0.label)
+            }
             return MagicalEntity(
                 type: type,
                 subtype: detected.suggestedSubtype,
+                subtypeKey: detected.suggestedSubtype,
                 value: detected.value,
                 label: detected.label,
                 startIndex: detected.startIndex,
                 endIndex: detected.endIndex,
-                isConfirmed: false
+                isConfirmed: false,
+                suggestedOptions: options,
+                message: detected.message
             )
         }
 

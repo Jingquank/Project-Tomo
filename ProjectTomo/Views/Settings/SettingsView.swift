@@ -17,7 +17,7 @@ struct SettingsView: View {
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
-            .background(TomoTheme.pageBackground)
+            .tomoBackground()
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -84,7 +84,7 @@ struct SettingsView: View {
                         HStack {
                             Spacer()
                             Text("Clear Log")
-                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                                .font(TomoTheme.smallActionFont)
                                 .foregroundStyle(.red)
                             Spacer()
                         }
@@ -97,7 +97,7 @@ struct SettingsView: View {
                     if !debugLog.entries.isEmpty {
                         Text("\(debugLog.entries.count)")
                             .font(TomoTheme.captionFont)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(TomoTheme.pageBackground)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 2)
                             .background(Capsule().fill(TomoTheme.secondaryText))

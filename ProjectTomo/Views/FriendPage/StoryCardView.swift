@@ -4,18 +4,15 @@ struct StoryCardView: View {
     let story: Story
     var isPinned: Bool
     var showRotation: Bool = false
-    var detector: MagicalContentDetector?
     var onTap: () -> Void
     var onTogglePin: (() -> Void)?
+    var onSetAsProfilePic: (() -> Void)?
+    var onSetAsName: (() -> Void)?
 
     private var rotation: Double {
         guard showRotation else { return 0 }
         let seed = story.id.hashValue
         return Double(seed % 5) - 2.0
-    }
-
-    private var isExpandedForConfirmation: Bool {
-        detector?.showConfirmation == true && detector?.currentStory?.id == story.id
     }
 
     var body: some View {
@@ -28,11 +25,6 @@ struct StoryCardView: View {
                 countdownContent
             } else {
                 regularContent
-            }
-
-            if isExpandedForConfirmation, let detector {
-                MagicalConfirmationView(detector: detector)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
         .padding(TomoTheme.cardPadding)
@@ -54,6 +46,22 @@ struct StoryCardView: View {
                     onTogglePin?()
                 } label: {
                     Label(isPinned ? "Unpin" : "Pin", systemImage: isPinned ? "pin.slash" : "pin")
+                }
+            }
+
+            if story.imageData != nil && !story.isThumbnailStory {
+                Button {
+                    onSetAsProfilePic?()
+                } label: {
+                    Label("Set as Profile Picture", systemImage: "person.crop.circle")
+                }
+            }
+
+            if canBeSetAsName && !story.isNameStory {
+                Button {
+                    onSetAsName?()
+                } label: {
+                    Label("Set as Name", systemImage: "textformat")
                 }
             }
         }
@@ -92,7 +100,7 @@ struct StoryCardView: View {
 
     private var nameContent: some View {
         Text(story.textContent)
-            .font(.system(size: 22, weight: .semibold, design: .rounded))
+            .font(TomoTheme.subheadingFont)
             .foregroundStyle(TomoTheme.primaryText)
     }
 
@@ -113,6 +121,14 @@ struct StoryCardView: View {
                 .font(TomoTheme.captionFont)
                 .foregroundStyle(TomoTheme.secondaryText)
         }
+    }
+
+    private var canBeSetAsName: Bool {
+        let text = story.textContent
+        guard !text.isEmpty, text.count <= 50 else { return false }
+        guard !text.contains("\n") else { return false }
+        let sentenceEnders: Set<Character> = [".", "!", "?"]
+        return !text.contains(where: { sentenceEnders.contains($0) })
     }
 
     private var hasCountdown: Bool {

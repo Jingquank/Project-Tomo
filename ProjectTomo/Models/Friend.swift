@@ -42,37 +42,56 @@ final class Friend {
         return String(name.prefix(2)).uppercased()
     }
 
-    var liveSubtitle: String {
+    var allSubtitles: [String] {
         let magical = stories.flatMap(\.magicalEntities)
+        let firstName = String(name.split(separator: " ").first ?? "")
+        var results: [String] = []
 
         for entity in magical where entity.isConfirmed {
             switch entity.type {
             case .birthday:
                 if let days = entity.daysUntilNextOccurrence {
-                    if days == 0 { return "\(name.split(separator: " ").first ?? "")'s birthday is today!" }
-                    return "\(name.split(separator: " ").first ?? "")'s birthday in \(days) days"
+                    if days == 0 {
+                        results.append("\(firstName)'s birthday is today!")
+                    } else {
+                        results.append("\(firstName)'s birthday in \(days) days")
+                    }
                 }
             case .importantDate, .anniversary:
                 if let days = entity.daysUntilNextOccurrence {
-                    return "\(entity.label ?? entity.value) in \(days) days"
+                    results.append("\(entity.label ?? entity.value) in \(days) days")
                 }
             case .location:
-                if entity.subtype == "currentCity" {
-                    return "Lives in \(entity.value)"
+                switch entity.subtypeKey {
+                case "currentCity":
+                    results.append("Lives in \(entity.value)")
+                case "hometown":
+                    results.append("From \(entity.value)")
+                case "visiting":
+                    results.append("Visiting \(entity.value)")
+                case "birthplace":
+                    results.append("Born in \(entity.value)")
+                default:
+                    results.append("Based in \(entity.value)")
                 }
-            default:
+            case .mbti:
+                results.append("Personality: \(entity.value)")
+            case .phoneNumber:
                 break
             }
         }
 
         if let latest = unpinnedStories.first {
             let text = latest.textContent
-            if text.count > 60 {
-                return String(text.prefix(57)) + "..."
+            if !text.isEmpty {
+                results.append(text)
             }
-            return text
         }
 
-        return ""
+        return results
+    }
+
+    var liveSubtitle: String {
+        allSubtitles.first ?? ""
     }
 }

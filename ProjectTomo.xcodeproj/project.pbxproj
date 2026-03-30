@@ -25,8 +25,10 @@
 		91BDCE8209004632DBEB25C6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D8965E2265D423A8D83F39 /* SettingsView.swift */; };
 		9B317E033A44BD4374D3CABC /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */; };
 		9DFB3F3AD48E6BCAEB7FE1AB /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0703264787FC102891CB8 /* WaterfallLayout.swift */; };
+		A1B2C3D4E5F6789012345678 /* CreateStorySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F6789012345678A1 /* CreateStorySheet.swift */; };
 		A6646EA2894EA9A2F09C21D1 /* SearchSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */; };
-		CA1A000B52A8C3E4E030F113 /* StoryCardFrameKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */; };
+		C3D4E5F6789012345678A1B2 /* FriendSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E5F6789012345678A1B2C3 /* FriendSettingsView.swift */; };
+
 		D8DD8E5D4C1D5AA8300215D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B16346D31E6B59F325D0530 /* Assets.xcassets */; };
 		DC16BCB5C4FE35B1A1023E86 /* dummy-cheshire.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79B37E8F11D716CF6B70BBD1 /* dummy-cheshire.jpg */; };
 		E45C93D75B041EBED5DFA79A /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00CA10302B5331DC79149862 /* Lora-Bold.ttf */; };
@@ -35,7 +37,6 @@
 		E9F9B2CCF504A053E31931E8 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74493084354AA02D6927051B /* Story.swift */; };
 		EA59DFB678B66A6FA726F395 /* StoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0D2D5E522531FD26D101F /* StoryCardView.swift */; };
 		EB77511A18F62C272F7EBF83 /* DummyDataSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8ABCD95CF866B81387AB62 /* DummyDataSeeder.swift */; };
-		F062EB48BA749C40FBD43A2A /* AddFriendSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */; };
 		F29AC66E4B75081C84278CA6 /* TomoTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F30AA335456455755EAC3D /* TomoTheme.swift */; };
 		F658007E2210304FF6A544CF /* ScrollFadeOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */; };
 		FD583FE2146D0F68DE2F8A9B /* FriendPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D696B8BFF7B47327AFE33827 /* FriendPageView.swift */; };
@@ -50,10 +51,9 @@
 		1EF864ED2822C89E108A80C5 /* MagicalTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalTextView.swift; sourceTree = "<group>"; };
 		21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSheet.swift; sourceTree = "<group>"; };
 		21D8965E2265D423A8D83F39 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		259D06E1BB326FF0046337B1 /* ProjectTomo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ProjectTomo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		259D06E1BB326FF0046337B1 /* ProjectTomo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectTomo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EA1C0820FBBF6A3E38E28F /* DebugLogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLogStore.swift; sourceTree = "<group>"; };
 		4B8ABCD95CF866B81387AB62 /* DummyDataSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyDataSeeder.swift; sourceTree = "<group>"; };
-		5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardFrameKey.swift; sourceTree = "<group>"; };
 		6EA189A0DFBFC6D92483FC9D /* AnthropicService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicService.swift; sourceTree = "<group>"; };
 		71C4D0D78B1A5527EF7B476D /* StoryInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryInputBar.swift; sourceTree = "<group>"; };
 		74493084354AA02D6927051B /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -65,16 +65,18 @@
 		90C0DDF5A7ADA7EF0699532C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		988B9CBA13BFC9AFFE8740BA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A1D0703264787FC102891CB8 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		B2C3D4E5F6789012345678A1 /* CreateStorySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStorySheet.swift; sourceTree = "<group>"; };
 		B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollFadeOverlay.swift; sourceTree = "<group>"; };
-		BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendSheet.swift; sourceTree = "<group>"; };
 		C137EC44CC6E8EC5A62B762B /* MagicalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalEntity.swift; sourceTree = "<group>"; };
 		CDDDF79B11C623A1DF111A7F /* StoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailView.swift; sourceTree = "<group>"; };
 		D1F30AA335456455755EAC3D /* TomoTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomoTheme.swift; sourceTree = "<group>"; };
 		D31748C3960CEA972C6E829E /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		D3E0D2D5E522531FD26D101F /* StoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCardView.swift; sourceTree = "<group>"; };
+		D4E5F6789012345678A1B2C3 /* FriendSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSettingsView.swift; sourceTree = "<group>"; };
 		D696B8BFF7B47327AFE33827 /* FriendPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPageView.swift; sourceTree = "<group>"; };
 		DB301962E3F9B73CFA5E4C7F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		F2FCC065598B7C690C2E2695 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+
 		F3AD3FEF760F2A4821B0A70F /* MagicalConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicalConfirmationView.swift; sourceTree = "<group>"; };
 		F4BC63B9A046DF4B29CCB6CB /* PaperClipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperClipView.swift; sourceTree = "<group>"; };
 		F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D696B8BFF7B47327AFE33827 /* FriendPageView.swift */,
+				D4E5F6789012345678A1B2C3 /* FriendSettingsView.swift */,
 				F3AD3FEF760F2A4821B0A70F /* MagicalConfirmationView.swift */,
 				1EF864ED2822C89E108A80C5 /* MagicalTextView.swift */,
 				D3E0D2D5E522531FD26D101F /* StoryCardView.swift */,
@@ -109,12 +112,11 @@
 		5882C7B3BCFEB1E6AA0A1301 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				BC6FCA388A7BE6805BCAEFC6 /* AddFriendSheet.swift */,
 				F9E66D294E7AC4CA5C93D144 /* AvatarView.swift */,
+				B2C3D4E5F6789012345678A1 /* CreateStorySheet.swift */,
 				F4BC63B9A046DF4B29CCB6CB /* PaperClipView.swift */,
 				B321F2F49E61E517A1B32A91 /* ScrollFadeOverlay.swift */,
 				21BFD971AFE1C96C4F2BFC6E /* SearchSheet.swift */,
-				5C042540E6FA3E5ED5398011 /* StoryCardFrameKey.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -265,7 +267,6 @@
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					37D0F2CB6E1D760D847EA3F3 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -309,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F062EB48BA749C40FBD43A2A /* AddFriendSheet.swift in Sources */,
 				214EA057017F6AF9D0B456CF /* AnthropicService.swift in Sources */,
 				9B317E033A44BD4374D3CABC /* AvatarView.swift in Sources */,
 				76B7DEE1ACF6C863A53FBFF7 /* BottomBarView.swift in Sources */,
@@ -331,7 +331,8 @@
 				6F5C82B257DCA98026B6EAF9 /* Secrets.swift in Sources */,
 				91BDCE8209004632DBEB25C6 /* SettingsView.swift in Sources */,
 				E9F9B2CCF504A053E31931E8 /* Story.swift in Sources */,
-				CA1A000B52A8C3E4E030F113 /* StoryCardFrameKey.swift in Sources */,
+				A1B2C3D4E5F6789012345678 /* CreateStorySheet.swift in Sources */,
+				C3D4E5F6789012345678A1B2 /* FriendSettingsView.swift in Sources */,
 				EA59DFB678B66A6FA726F395 /* StoryCardView.swift in Sources */,
 				093CC8D7A952B47C37788D1A /* StoryDetailView.swift in Sources */,
 				1DB677CFA92C41D9DD60B58B /* StoryInputBar.swift in Sources */,
@@ -411,7 +412,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DK5TWB9395;
 				INFOPLIST_FILE = ProjectTomo/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -433,7 +434,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DK5TWB9395;
 				INFOPLIST_FILE = ProjectTomo/Info.plist;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (

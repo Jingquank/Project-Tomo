@@ -2,8 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    var namespace: Namespace.ID
-    var onFriendTapped: (Friend) -> Void
+    @Binding var path: [Friend]
 
     @Environment(\.modelContext) private var modelContext
     @Query private var friends: [Friend]
@@ -35,35 +34,31 @@ struct HomeView: View {
                     Text("Tomo")
                         .font(TomoTheme.titleFont)
                         .foregroundStyle(TomoTheme.tomoTitle)
-                        .padding(.top, 16)
-                        .padding(.bottom, 24)
+                        .padding(.top, TomoTheme.titleTopPadding)
+                        .padding(.bottom, TomoTheme.titleBottomPadding)
 
                     if friends.isEmpty {
                         emptyState
                     } else {
                         WaterfallLayout(columns: 2, spacing: TomoTheme.gridGutter) {
                             ForEach(sortedFriends) { friend in
-                                FriendCardView(
-                                    friend: friend,
-                                    namespace: namespace
-                                )
-                                .matchedGeometryEffect(id: "card-\(friend.id)", in: namespace)
-                                .onTapGesture {
-                                    onFriendTapped(friend)
-                                }
-                                .contextMenu {
-                                    Button(role: .destructive) {
-                                        deleteFriend(friend)
-                                    } label: {
-                                        Label("Delete", systemImage: "trash")
+                                FriendCardView(friend: friend)
+                                    .onTapGesture {
+                                        path.append(friend)
                                     }
-                                }
+                                    .contextMenu {
+                                        Button(role: .destructive) {
+                                            deleteFriend(friend)
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
                             }
                         }
                         .padding(.horizontal, TomoTheme.gridGutter)
                     }
 
-                    Spacer().frame(height: 120)
+                    Spacer().frame(height: TomoTheme.scrollBottomInset + 20)
                 }
             }
             .scrollIndicators(.hidden)
@@ -78,9 +73,13 @@ struct HomeView: View {
                 onSort: { showSortOptions = true }
             )
         }
+        .tomoBackground()
+        .navigationTitle("Tomo")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.hidden, for: .navigationBar)
         .sheet(isPresented: $showAddSheet) {
-            AddFriendSheet()
-                .presentationDetents([.medium])
+            CreateStorySheet()
+                .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
         .sheet(isPresented: $showSearchSheet) {
@@ -88,7 +87,7 @@ struct HomeView: View {
                 onFriendSelected: { friend in
                     showSearchSheet = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        onFriendTapped(friend)
+                        path.append(friend)
                     }
                 }
             )
@@ -117,7 +116,7 @@ struct HomeView: View {
                 Spacer()
                 Button { showSettings = true } label: {
                     Image(systemName: "gearshape")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .font(TomoTheme.iconFont)
                         .foregroundStyle(TomoTheme.warmCharcoal)
                         .frame(width: 40, height: 40)
                 }
@@ -130,8 +129,8 @@ struct HomeView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 16) {
-            Spacer().frame(height: 120)
+        VStack(spacing: TomoTheme.titleTopPadding) {
+            Spacer().frame(height: TomoTheme.scrollBottomInset + 20)
             Image(systemName: "heart.text.clipboard")
                 .font(.system(size: 48, weight: .light, design: .rounded))
                 .foregroundStyle(TomoTheme.secondaryText.opacity(0.5))

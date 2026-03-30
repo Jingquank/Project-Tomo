@@ -3,157 +3,77 @@ import PhotosUI
 
 struct StoryDetailView: View {
     @Bindable var story: Story
-    var onDismiss: () -> Void
 
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dismiss) private var dismiss
     @State private var isEditing = false
     @State private var editText: String = ""
     @State private var showDeleteConfirmation = false
     @State private var selectedPhoto: PhotosPickerItem?
 
-    @State private var showToolbar = false
-    @State private var showContent = false
-
-    @State private var overscrollOffset: CGFloat = 0
-    @State private var isDismissing = false
-
-    private var dragProgress: CGFloat {
-        min(max(overscrollOffset, 0) / 300, 1.0)
-    }
-
-    private var dismissScale: CGFloat {
-        1.0 - (dragProgress * 0.15)
-    }
-
-    private var dismissRadius: CGFloat {
-        TomoTheme.cardCornerRadius + (dragProgress * 20)
-    }
-
     var body: some View {
-        ZStack {
-            TomoTheme.pageBackground.ignoresSafeArea()
-                .onTapGesture {
-                    if isEditing { saveEdit() }
-                }
-
-            VStack(spacing: 0) {
-                toolbar
-                    .padding(.horizontal, 16)
-                    .padding(.top, 8)
-                    .opacity(showToolbar ? 1 : 0)
-                    .offset(y: showToolbar ? 0 : 10)
-
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        if story.isThumbnailStory {
-                            thumbnailDetail
-                        } else if story.isNameStory {
-                            nameDetail
-                        } else {
-                            contentDetail
-                        }
-                    }
-                    .padding(24)
-                    .padding(.bottom, 40)
-                }
-                .scrollIndicators(.hidden)
-                .onScrollGeometryChange(for: CGFloat.self) { geo in
-                    geo.contentOffset.y
-                } action: { _, newOffset in
-                    guard !isDismissing else { return }
-                    if newOffset < 0 {
-                        overscrollOffset = -newOffset
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: TomoTheme.sectionSpacing) {
+                    if story.isThumbnailStory {
+                        thumbnailDetail
+                    } else if story.isNameStory {
+                        nameDetail
                     } else {
-                        overscrollOffset = 0
+                        contentDetail
                     }
                 }
-                .onScrollPhaseChange { oldPhase, newPhase in
-                    guard !isDismissing else { return }
-                    if oldPhase == .tracking && newPhase != .tracking {
-                        if overscrollOffset > 120 {
-                            performDismiss()
-                        }
+                .padding(TomoTheme.contentPadding)
+                .padding(.bottom, 40)
+            }
+            .scrollIndicators(.hidden)
+            .tomoBackground()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button {
+                        if isEditing { saveEdit() }
+                        dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(TomoTheme.emphasisFont)
+                            .foregroundStyle(TomoTheme.warmCharcoal)
                     }
                 }
-                .overlay { ScrollFadeOverlay() }
-                .opacity(showContent ? 1 : 0)
-                .offset(y: showContent ? 0 : 15)
-            }
-        }
-        .scaleEffect(dismissScale)
-        .clipShape(RoundedRectangle(cornerRadius: dismissRadius, style: .continuous))
-        .opacity(1 - (dragProgress * 0.3))
-        .onAppear {
-            if reduceMotion {
-                showToolbar = true
-                showContent = true
-            } else {
-                withAnimation(.spring(duration: 0.45, bounce: 0.2).delay(0.1)) {
-                    showToolbar = true
-                }
-                withAnimation(.spring(duration: 0.5, bounce: 0.2).delay(0.2)) {
-                    showContent = true
-                }
-            }
-        }
-        .alert("Delete this story?", isPresented: $showDeleteConfirmation) {
-            Button("Delete", role: .destructive) {
-                modelContext.delete(story)
-                performDismiss()
-            }
-            Button("Cancel", role: .cancel) {}
-        }
-    }
-
-    private func performDismiss() {
-        isDismissing = true
-        showToolbar = false
-        showContent = false
-        onDismiss()
-    }
-
-    private var toolbar: some View {
-        GlassEffectContainer {
-            HStack {
-                Button(action: performDismiss) {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 15, weight: .semibold, design: .rounded))
-                        .foregroundStyle(TomoTheme.warmCharcoal)
-                        .frame(width: 36, height: 36)
-                }
-                .glassEffect(.regular.interactive(), in: .circle)
-
-                Spacer()
 
                 if !story.isDefaultStory {
-                    HStack(spacing: 12) {
-                        Button {
-                            if isEditing {
-                                saveEdit()
-                            } else {
-                                editText = story.textContent
-                                isEditing = true
+                    ToolbarItem(placement: .topBarTrailing) {
+                        HStack(spacing: 12) {
+                            Button {
+                                if isEditing {
+                                    saveEdit()
+                                } else {
+                                    editText = story.textContent
+                                    isEditing = true
+                                }
+                            } label: {
+                                Image(systemName: isEditing ? "checkmark" : "pencil")
+                                    .font(TomoTheme.emphasisFont)
+                                    .foregroundStyle(TomoTheme.warmCharcoal)
                             }
-                        } label: {
-                            Image(systemName: isEditing ? "checkmark" : "pencil")
-                                .font(.system(size: 15, weight: .semibold, design: .rounded))
-                                .foregroundStyle(TomoTheme.warmCharcoal)
-                                .frame(width: 36, height: 36)
-                        }
-                        .glassEffect(.regular.interactive(), in: .circle)
 
-                        Button {
-                            showDeleteConfirmation = true
-                        } label: {
-                            Image(systemName: "trash")
-                                .font(.system(size: 15, weight: .semibold, design: .rounded))
-                                .foregroundStyle(TomoTheme.warmCharcoal)
-                                .frame(width: 36, height: 36)
+                            Button {
+                                showDeleteConfirmation = true
+                            } label: {
+                                Image(systemName: "trash")
+                                    .font(TomoTheme.emphasisFont)
+                                    .foregroundStyle(TomoTheme.warmCharcoal)
+                            }
                         }
-                        .glassEffect(.regular.interactive(), in: .circle)
                     }
                 }
+            }
+            .alert("Delete this story?", isPresented: $showDeleteConfirmation) {
+                Button("Delete", role: .destructive) {
+                    modelContext.delete(story)
+                    dismiss()
+                }
+                Button("Cancel", role: .cancel) {}
             }
         }
     }
@@ -192,27 +112,27 @@ struct StoryDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             if isEditing {
                 TextField("Name", text: $editText)
-                    .font(.system(size: 28, weight: .semibold, design: .rounded))
+                    .font(TomoTheme.headingFont)
                     .foregroundStyle(TomoTheme.primaryText)
             } else {
                 Text(story.textContent)
-                    .font(.system(size: 28, weight: .semibold, design: .rounded))
+                    .font(TomoTheme.headingFont)
                     .foregroundStyle(TomoTheme.primaryText)
             }
         }
     }
 
     private var contentDetail: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: TomoTheme.sectionSpacing) {
             if isEditing {
                 TextEditor(text: $editText)
-                    .font(.system(size: 17, weight: .regular, design: .rounded))
+                    .font(TomoTheme.nameFont)
                     .foregroundStyle(TomoTheme.primaryText)
                     .scrollContentBackground(.hidden)
                     .frame(minHeight: 200)
             } else {
                 MagicalTextView(story: story)
-                    .font(.system(size: 17, weight: .regular, design: .rounded))
+                    .font(TomoTheme.nameFont)
             }
 
             if let data = story.imageData, let image = UIImage(data: data) {
